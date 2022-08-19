@@ -12,11 +12,27 @@ export const DataProvider = ({children})=>{
     const [fakeAnswerTwo, setFakeAnswerTwo] = useState(null);
     const [correctAnswer, setCorrectAnswer] = useState(null);
     const [answers,setAnswers] =useState(Array(10).fill("")); // for results screen
-    const [randomAnswer,setRandomAnswers] =useState([correctAnswer,fakeAnswerOne,fakeAnswerTwo]); // for random answers
-    const [randomAnswer1, setRandomAnswer1] = useState(null);
-    const [randomAnswer2, setRandomAnswer2] = useState(null);
-    const [randomAnswer3, setRandomAnswer3] = useState(null);
+    const [randomAnswer,setRandomAnswers] =useState(Array(3).fill(""));
+    // const [randomAnswer1, setRandomAnswer1] = useState(null);
+    // const [randomAnswer2, setRandomAnswer2] = useState(null);
+    // const [randomAnswer3, setRandomAnswer3] = useState(null);
+    // const [randomAnswer3, setRandomAnswer3] = useState(null);
     const [turn, setTurn] = useState(1);
+
+    function randomArrayShuffle(array,toplam) {
+        setCorrectAnswer(toplam);
+        var currentIndex = array.length, temporaryValue, randomIndex;
+        while (0 !== currentIndex) {
+          randomIndex = Math.floor(Math.random() * currentIndex);
+          currentIndex -= 1;
+          temporaryValue = array[currentIndex];
+          array[currentIndex] = array[randomIndex];
+          array[randomIndex] = temporaryValue;
+        }
+        setRandomAnswers(array);
+        return array;
+      }
+
     return (
         <DataContext.Provider
           value={{
@@ -36,16 +52,17 @@ export const DataProvider = ({children})=>{
             setCorrectAnswer,
             setAnswers,
             answers,
-            randomAnswer,
             setRandomAnswers,
-            randomAnswer1,
-            randomAnswer2,
-            randomAnswer3,
-            setRandomAnswer1,
-            setRandomAnswer2,
-            setRandomAnswer3,
+            randomAnswer,
+            // randomAnswer1,
+            // randomAnswer2,
+            // randomAnswer3,
+            // setRandomAnswer1,
+            // setRandomAnswer2,
+            // setRandomAnswer3,
             setTurn,
-            turn
+            turn,
+            randomArrayShuffle
           }}
         >
           {children}

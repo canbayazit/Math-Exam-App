@@ -36,37 +36,38 @@ const HomePage = () => {
       // setFakeAnswerOne(toplam - 1);
       // setFakeAnswerTwo(toplam + 1);
       console.log("operator changed");
-    } else if (operator === "Çıkarma") {
-      let firstValue = Math.floor(Math.random() * 100);
-      let secondValue = Math.floor(Math.random() * 100);
-      setFirstValue(firstValue);
-      setSecondValue(secondValue);
-      if (firstValue > secondValue) {
-        let cıkarma = firstValue - secondValue;
-        setCorrectAnswer(cıkarma);
-        setFakeAnswerOne(cıkarma - 1);
-        setFakeAnswerOne(cıkarma + 1);
-      } else {
-        let cıkarma = secondValue - firstValue;
-        setCorrectAnswer(cıkarma);
-        setFakeAnswerOne(cıkarma - 1);
-        setFakeAnswerOne(cıkarma + 1);
-      }
-    } else if (operator === "Çarpma") {
-      let firstValue = Math.floor(Math.random() * 10);
-      let secondValue = Math.floor(Math.random() * 10);
-      setFirstValue(firstValue);
-      setSecondValue(secondValue);
-      let carpmaCorrect = secondValue * firstValue;
-      let carpmaFakeOne = (secondValue - 1) * firstValue;
-      let carpmaFakeTwo = secondValue * (firstValue + 1);
-      setCorrectAnswer(carpmaCorrect);
-      setFakeAnswerOne(carpmaFakeOne);
-      setFakeAnswerOne(carpmaFakeTwo);
-    } else if (operator === "Bölme") {
-      //   let firstValue=Math.floor(Math.random() * 100);
-      // let secondValue=Math.floor(Math.random() * 10);
-    }
+     }
+    //else if (operator === "Çıkarma") {
+    //   let firstValue = Math.floor(Math.random() * 100);
+    //   let secondValue = Math.floor(Math.random() * 100);
+    //   setFirstValue(firstValue);
+    //   setSecondValue(secondValue);
+    //   if (firstValue > secondValue) {
+    //     let cıkarma = firstValue - secondValue;
+    //     setCorrectAnswer(cıkarma);
+    //     setFakeAnswerOne(cıkarma - 1);
+    //     setFakeAnswerOne(cıkarma + 1);
+    //   } else {
+    //     let cıkarma = secondValue - firstValue;
+    //     setCorrectAnswer(cıkarma);
+    //     setFakeAnswerOne(cıkarma - 1);
+    //     setFakeAnswerOne(cıkarma + 1);
+    //   }
+    // } else if (operator === "Çarpma") {
+    //   let firstValue = Math.floor(Math.random() * 10);
+    //   let secondValue = Math.floor(Math.random() * 10);
+    //   setFirstValue(firstValue);
+    //   setSecondValue(secondValue);
+    //   let carpmaCorrect = secondValue * firstValue;
+    //   let carpmaFakeOne = (secondValue - 1) * firstValue;
+    //   let carpmaFakeTwo = secondValue * (firstValue + 1);
+    //   setCorrectAnswer(carpmaCorrect);
+    //   setFakeAnswerOne(carpmaFakeOne);
+    //   setFakeAnswerOne(carpmaFakeTwo);
+    // } else if (operator === "Bölme") {
+    //   //   let firstValue=Math.floor(Math.random() * 100);
+    //   // let secondValue=Math.floor(Math.random() * 10);
+    // }
   }, [operator]);
 
   return (
