@@ -1,0 +1,17 @@
+.operator-container {
+    display: flex;
+    gap: 30px;
+    .operator {
+        min-width: 225px;
+        width: fit-content;
+        display: block;
+        font-size: 64px;
+        text-align: right;        
+      }
+        
+  p {
+    min-width: 50px;
+  }
+  }
+
+  

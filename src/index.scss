@@ -1,0 +1,43 @@
+@import "./styles/variables.scss";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color:map-get($colors, backgroundColor);
+  color: white;
+  font-family: "Handlee", cursive;
+  user-select: none;  
+    .container {
+    max-width: 1440px;
+    margin: 0 auto;
+    height: 100vh;
+    padding: 60px;
+  }
+  p {
+    font-size: 64px;
+  }
+  button {
+    all: unset;
+    cursor: pointer;
+    
+    
+  }
+  .btn {
+    cursor: pointer;
+    transition: all 0.5s;
+    &:hover {
+      transform: scale(1.1);
+    }
+    
+    &:active {
+      
+    }
+    
+  }
+  
+
+}

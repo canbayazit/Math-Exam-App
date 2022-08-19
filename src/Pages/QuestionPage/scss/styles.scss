@@ -1,0 +1,39 @@
+.questions-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    .stats{
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        ul {
+            list-style: none;
+            font-size: 48px;
+            display: flex;
+            li {
+                margin: 0 3rem 0 3rem;
+          }
+    }
+  }
+  .stickman-container{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 10px 900px;
+    .answers {
+        width: 900px;
+        .answer-btn:nth-child(1) {
+            margin-left: 90px;
+          }
+          
+          .answer-btn:nth-child(2) {
+            margin-left: 400px;
+          }
+          
+          .answer-btn:nth-child(3) {
+            margin-left: 180px;
+          }
+      }
+  }
+  
+}
