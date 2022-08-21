@@ -18,7 +18,7 @@ export const DataProvider = ({children})=>{
 
     const initialState = { 
         Points: 0,
-        Turn: 0,
+        Turn: 1,
         Question: 0,
         CorrectUnits: 0,
         WrongUnits: 0, };
@@ -47,7 +47,19 @@ export const DataProvider = ({children})=>{
 // }
 
     function randomArrayShuffle(array,toplam) {
+        
+      }
+
+    function randomNumbers (params) {
+        let firstValue = Math.floor(Math.random() * 100);
+        let secondValue = Math.floor(Math.random() * 100);
+        setFirstValue(firstValue);
+        setSecondValue(secondValue);
+        let toplam = firstValue + secondValue;
+        let array = [toplam, toplam - 1, toplam + 1];
+        
         setCorrectAnswer(toplam);
+
         var currentIndex = array.length, temporaryValue, randomIndex;
         while (0 !== currentIndex) {
           randomIndex = Math.floor(Math.random() * currentIndex);
@@ -60,9 +72,9 @@ export const DataProvider = ({children})=>{
             toplam===item && setIndex(index)
         })
         setRandomAnswers(array);
-        return array;
+        
       }
-
+     
     return (
         <DataContext.Provider
           value={{
@@ -89,7 +101,8 @@ export const DataProvider = ({children})=>{
             scores,
             setScores,
             index,
-            setIndex
+            setIndex,
+            randomNumbers
           }}
         >
           {children}

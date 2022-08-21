@@ -23,10 +23,12 @@ const HomePage = () => {
     setCorrectAnswer,
     firstValue,
     secondValue,
+    randomNumbers
   } = useData();
 
   useEffect(() => {
     if (operator === "Toplama") {
+      randomNumbers();
       // let firstValue = Math.floor(Math.random() * 100);
       // let secondValue = Math.floor(Math.random() * 100);
       // setFirstValue(firstValue);
