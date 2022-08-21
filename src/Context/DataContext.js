@@ -1,5 +1,5 @@
-import { createContext, useContext, useState } from "react";
-import { answerButton, stickman } from "../Assets";
+import { createContext, useContext, useReducer, useState } from "react";
+import { answerButton, stickman,sadStickman ,happyStickman} from "../Assets";
 const DataContext= createContext();
 export const useData = () => useContext(DataContext);
 
@@ -10,14 +10,41 @@ export const DataProvider = ({children})=>{
     const [operator, setOperator] = useState(null);
     const [fakeAnswerOne, setFakeAnswerOne] = useState(null);
     const [fakeAnswerTwo, setFakeAnswerTwo] = useState(null);
-    const [correctAnswer, setCorrectAnswer] = useState(null);
+    const [correctAnswer, setCorrectAnswer] = useState(null); // for Correct answer
     const [answers,setAnswers] =useState(Array(10).fill("")); // for results screen
-    const [randomAnswer,setRandomAnswers] =useState(Array(3).fill(""));
-    // const [randomAnswer1, setRandomAnswer1] = useState(null);
-    // const [randomAnswer2, setRandomAnswer2] = useState(null);
-    // const [randomAnswer3, setRandomAnswer3] = useState(null);
-    // const [randomAnswer3, setRandomAnswer3] = useState(null);
-    const [turn, setTurn] = useState(1);
+    const [randomAnswer,setRandomAnswers] =useState(Array(3).fill("")); // random answers in array
+    const [color, setColor] = useState("white");
+    const [index, setIndex] = useState(null);
+
+    const initialState = { 
+        Points: 0,
+        Turn: 0,
+        Question: 0,
+        CorrectUnits: 0,
+        WrongUnits: 0, };
+
+// const [score, updateScore] = useReducer(
+//   (state, updates) => ({ ...state, ...updates }),
+//   initialState
+// );
+    const [scores, setScores] = useState({ 
+        Points: 0,
+        Turn: 0,
+        Question: 1,
+        CorrectUnits: 0,
+        WrongUnits: 0, });
+    // const [turn, setTurn] = useState(1);
+
+
+//     const stickmanFunction=(firstValue,secondValue,stickman)=>{
+//             return stickman(`${firstValue}+${secondValue}`)
+//     }
+//     const sadStickmanFunction=(firstValue,secondValue,sadStickman)=>{
+//         return sadStickman(`${firstValue}+${secondValue}`)
+// }
+// const happyStickmanFunction=(firstValue,secondValue,happyStickman)=>{
+//     return happyStickman(`${firstValue}+${secondValue}`)
+// }
 
     function randomArrayShuffle(array,toplam) {
         setCorrectAnswer(toplam);
@@ -29,6 +56,9 @@ export const DataProvider = ({children})=>{
           array[currentIndex] = array[randomIndex];
           array[randomIndex] = temporaryValue;
         }
+        array.map((item,index)=>{
+            toplam===item && setIndex(index)
+        })
         setRandomAnswers(array);
         return array;
       }
@@ -40,8 +70,7 @@ export const DataProvider = ({children})=>{
             setSecondValue,
             firstValue,
             secondValue,
-            answerButton,
-            stickman,
+            answerButton,       
             setOperator,
             operator,
             fakeAnswerOne,
@@ -53,16 +82,14 @@ export const DataProvider = ({children})=>{
             setAnswers,
             answers,
             setRandomAnswers,
-            randomAnswer,
-            // randomAnswer1,
-            // randomAnswer2,
-            // randomAnswer3,
-            // setRandomAnswer1,
-            // setRandomAnswer2,
-            // setRandomAnswer3,
-            setTurn,
-            turn,
-            randomArrayShuffle
+            randomAnswer,           
+            randomArrayShuffle,
+            setColor,
+            color,
+            scores,
+            setScores,
+            index,
+            setIndex
           }}
         >
           {children}
