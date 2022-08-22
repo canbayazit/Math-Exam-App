@@ -1,3 +1,13 @@
+#MATH EXAM APP
+Matematik 4 işlem sorularından oluşan ve bu sorulara doğru cevap verilmesi durumunda puan hesaplamasının yapıldığı bir web uygulaması.
+
+## Kullanılan Yapılar
+
+* LocalStorage
+* Context API
+* React Hooks
+* React-Router-Dom
+* SVG
 
 ## İçerik
 
