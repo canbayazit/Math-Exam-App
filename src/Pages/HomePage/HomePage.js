@@ -10,33 +10,18 @@ const operators = ["Toplama", "Çıkarma", "Çarpma", "Bölme"];
 
 const HomePage = () => {
 
-  const {
-    setFirstValue,
+  const {   
     setOperator,
     operator,
-    setSecondValue,
-    fakeAnswerOne,
-    fakeAnswerTwo,
-    correctAnswer,
-    setFakeAnswerOne,
-    setFakeAnswerTwo,
-    setCorrectAnswer,
-    firstValue,
-    secondValue,
-    randomNumbers
+    setOperation,
+    setResult
   } = useData();
+
 
   useEffect(() => {
     if (operator === "Toplama") {
-      randomNumbers();
-      // let firstValue = Math.floor(Math.random() * 100);
-      // let secondValue = Math.floor(Math.random() * 100);
-      // setFirstValue(firstValue);
-      // setSecondValue(secondValue);
-      // let toplam = firstValue + secondValue;
-      // setCorrectAnswer(toplam);
-      // setFakeAnswerOne(toplam - 1);
-      // setFakeAnswerTwo(toplam + 1);
+    setOperation("+");
+     
       console.log("operator changed");
      }
     //else if (operator === "Çıkarma") {

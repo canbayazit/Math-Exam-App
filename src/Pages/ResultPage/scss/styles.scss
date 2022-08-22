@@ -9,11 +9,14 @@
        
       }
       .problem-heading  {
-        p
+       
+        li
         {
+            display: flex;
+            justify-content: space-between;
             font-size: 52px;
-        text-align: center;
-
+            text-align: center;
+            list-style-type: none;
         }
         
       }

@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { answerButton, stickman,sadStickman ,happyStickman} from "../Assets";
 const DataContext= createContext();
 export const useData = () => useContext(DataContext);
@@ -8,6 +8,7 @@ export const DataProvider = ({children})=>{
     const [firstValue, setFirstValue]=useState(null);
     const [secondValue, setSecondValue]=useState(null);
     const [operator, setOperator] = useState(null);
+    const [operation, setOperation] = useState("");
     const [fakeAnswerOne, setFakeAnswerOne] = useState(null);
     const [fakeAnswerTwo, setFakeAnswerTwo] = useState(null);
     const [correctAnswer, setCorrectAnswer] = useState(null); // for Correct answer
@@ -15,51 +16,32 @@ export const DataProvider = ({children})=>{
     const [randomAnswer,setRandomAnswers] =useState(Array(3).fill("")); // random answers in array
     const [color, setColor] = useState("white");
     const [index, setIndex] = useState(null);
-
-    const initialState = { 
-        Points: 0,
-        Turn: 1,
-        Question: 0,
-        CorrectUnits: 0,
-        WrongUnits: 0, };
-
-// const [score, updateScore] = useReducer(
-//   (state, updates) => ({ ...state, ...updates }),
-//   initialState
-// );
+    const [result, setResult] = useState({     
+        Turn:1,
+        Points:0,
+        CorrectUnits:0,
+        WrongUnits: 0 
+         });
+         
     const [scores, setScores] = useState({ 
-        Points: 0,
-        Turn: 0,
+        FirstNumber: [],
+        SecondNumber: [],
+        SelectedAnswers: [],
+        Icons:[],
+        Operation: "",
+        Points: 0,        
         Question: 1,
         CorrectUnits: 0,
-        WrongUnits: 0, });
-    // const [turn, setTurn] = useState(1);
+        WrongUnits: 0 });
 
 
-//     const stickmanFunction=(firstValue,secondValue,stickman)=>{
-//             return stickman(`${firstValue}+${secondValue}`)
-//     }
-//     const sadStickmanFunction=(firstValue,secondValue,sadStickman)=>{
-//         return sadStickman(`${firstValue}+${secondValue}`)
-// }
-// const happyStickmanFunction=(firstValue,secondValue,happyStickman)=>{
-//     return happyStickman(`${firstValue}+${secondValue}`)
-// }
 
-    function randomArrayShuffle(array,toplam) {
-        
-      }
+     
+      
 
-    function randomNumbers (params) {
-        let firstValue = Math.floor(Math.random() * 100);
-        let secondValue = Math.floor(Math.random() * 100);
-        setFirstValue(firstValue);
-        setSecondValue(secondValue);
-        let toplam = firstValue + secondValue;
-        let array = [toplam, toplam - 1, toplam + 1];
-        
-        setCorrectAnswer(toplam);
+    
 
+    function randomArray(array,toplam) {
         var currentIndex = array.length, temporaryValue, randomIndex;
         while (0 !== currentIndex) {
           randomIndex = Math.floor(Math.random() * currentIndex);
@@ -72,6 +54,18 @@ export const DataProvider = ({children})=>{
             toplam===item && setIndex(index)
         })
         setRandomAnswers(array);
+      }
+
+    function randomNumbersSum () {
+        let firstValue = Math.floor(Math.random() * 100);
+        let secondValue = Math.floor(Math.random() * 100);
+        setFirstValue(firstValue);
+        setSecondValue(secondValue);
+        let toplam = firstValue + secondValue;
+        let array = [toplam, toplam - 1, toplam + 1];        
+        setCorrectAnswer(toplam);
+        randomArray(array,toplam)
+        
         
       }
      
@@ -95,14 +89,19 @@ export const DataProvider = ({children})=>{
             answers,
             setRandomAnswers,
             randomAnswer,           
-            randomArrayShuffle,
+            randomArray,
             setColor,
             color,
             scores,
             setScores,
             index,
             setIndex,
-            randomNumbers
+            randomNumbersSum,
+            operation,
+            setOperation,
+            result,
+            setResult,
+     
           }}
         >
           {children}

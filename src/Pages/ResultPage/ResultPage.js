@@ -1,35 +1,74 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
-
-import { result, returnButton, problemsHeading } from "../../Assets";
+import { resultHeading, returnButton, problemsHeading } from "../../Assets";
+import { useData } from "../../Context/DataContext";
 
 import "./scss/styles.scss";
 
 const ResultPage = () => {
+
+  const {
+    scores,
+    result,
+    setResult,setScores
+  } = useData();
+
+
+const allScores = {...scores};
+
+// generalResult.Points+=allScores.Points;
+// generalResult.CorrectUnits +=allScores.CorrectUnits;
+// generalResult.WrongUnits+=allScores.WrongUnits;
+// setResult(()=>generalResult);
+
+// useEffect(() => {
+//   const getGameState =  JSON.parse(localStorage.getItem('gameState'));
+//       setResult(getGameState);
+// }, []);
+
+useEffect(() => {
+  localStorage.setItem('gameState', JSON.stringify({result }));
+  document.body.style.backgroundColor = '#2d2d2d';
+  }, []);
+
+const handleClick = ()=>{
+  setScores({ 
+    FirstNumber: [],
+    SecondNumber: [],
+    SelectedAnswers: [],
+    Icons:[],
+    Operation: "",
+    Points: 0,        
+    Question: 1,
+    CorrectUnits: 0,
+    WrongUnits: 0 });
+}
   return (
     <section className="container result-container">
       <div className="stats-container">
-        {result}
-        <p>Puan:</p>
-        <p>Dogru Cevap:</p>
-        <p>Yanlıs Cevap:</p>
+        {resultHeading}
+        <p>Puan: {scores.Points}</p>
+        <p>Dogru Cevap: {scores.CorrectUnits}</p>
+        <p>Yanlıs Cevap: {scores.WrongUnits}</p>
         <button className="btn large-btn">
-          <Link className="btn large-btn" to="/">
+          <Link className="btn large-btn" to="/" onClick={()=>handleClick()}>
             {returnButton}
           </Link>
         </button>
       </div>
       <div className="problem-heading">
-        {problemsHeading}
-        <p>5 x 7 = 35</p>
-        <p>5 x 7 = 35</p>
-        <p>5 x 7 = 35</p>
-        <p>5 x 7 = 35</p>
-        <p>5 x 7 = 35</p>
-        <p>5 x 7 = 35</p>
-        <p>5 x 7 = 35</p>
-        <p>5 x 7 = 35</p>
-        <p>5 x 7 = 35</p>
-        <p>5 x 7 = 35</p>
+       <span className="underLine"> {problemsHeading}   </span>     
+        {        
+          scores.FirstNumber.map((item,index) => {
+           
+              const secondNumber = scores.SecondNumber[index];
+              const selectedAnswers = scores.SelectedAnswers[index];              
+              const icons = scores.Icons[index];
+              console.log(icons);
+              return <li>{`${item} ${scores.Operation} ${secondNumber} = ${selectedAnswers}`}&nbsp; &nbsp; &nbsp;<span>{icons}</span> </li>
+                 
+          })
+        }        
       </div>
     </section>
   );
