@@ -10,21 +10,11 @@ const ResultPage = () => {
   const {
     scores,
     result,
-    setResult,setScores
+    setScores
   } = useData();
 
 
 const allScores = {...scores};
-
-// generalResult.Points+=allScores.Points;
-// generalResult.CorrectUnits +=allScores.CorrectUnits;
-// generalResult.WrongUnits+=allScores.WrongUnits;
-// setResult(()=>generalResult);
-
-// useEffect(() => {
-//   const getGameState =  JSON.parse(localStorage.getItem('gameState'));
-//       setResult(getGameState);
-// }, []);
 
 useEffect(() => {
   localStorage.setItem('gameState', JSON.stringify({result }));

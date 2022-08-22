@@ -17,10 +17,11 @@ export const DataProvider = ({children})=>{
     const [color, setColor] = useState("white");
     const [index, setIndex] = useState(null);
     const [result, setResult] = useState({     
-        Turn:1,
+        Turn:0,
         Points:0,
         CorrectUnits:0,
-        WrongUnits: 0 
+        WrongUnits: 0,
+        Operation: operation
          });
          
     const [scores, setScores] = useState({ 
@@ -64,10 +65,67 @@ export const DataProvider = ({children})=>{
         let toplam = firstValue + secondValue;
         let array = [toplam, toplam - 1, toplam + 1];        
         setCorrectAnswer(toplam);
-        randomArray(array,toplam)
-        
-        
+        randomArray(array,toplam)       
       }
+
+      
+      function randomNumbersSub () {
+        let firstValue = Math.floor(Math.random() * 100);
+      let secondValue = Math.floor(Math.random() * 100);
+     
+      if (firstValue > secondValue) {
+        setFirstValue(firstValue);
+        setSecondValue(secondValue);
+        let cıkarma = firstValue - secondValue;
+        let array = [cıkarma, cıkarma - 1, cıkarma + 1]; 
+        setCorrectAnswer(cıkarma);
+        randomArray(array,cıkarma) 
+      } else {
+        setFirstValue(secondValue);
+        setSecondValue(firstValue);
+        let cıkarma = secondValue - firstValue;
+        let array = [cıkarma, cıkarma - 1, cıkarma + 1]; 
+        setCorrectAnswer(cıkarma);
+        randomArray(array,cıkarma) 
+      }
+      }
+
+
+
+
+
+
+
+
+      function randomNumbersMul () {
+        let firstValue = (Math.floor(Math.random() * 10)+1);
+        let secondValue = (Math.floor(Math.random() * 10)+1);
+        setFirstValue(firstValue);
+        setSecondValue(secondValue);
+        let carpma = secondValue * firstValue;
+        let array = [carpma, carpma - 1, carpma + 1];     
+        setCorrectAnswer(carpma);
+        randomArray(array,carpma);          
+      }
+
+
+
+      function randomNumbersDiv () {
+        while (true) {
+            let firstValue = Math.floor(Math.random() * (100-10  ) + 10); 
+            let secondValue = (Math.floor(Math.random() * 10)+1);
+            if ((firstValue%secondValue)===0) {
+                setFirstValue(firstValue);
+                setSecondValue(secondValue);
+                let bolum = firstValue / secondValue;
+                let array = [bolum, bolum - 1, bolum + 1];
+                setCorrectAnswer(bolum);
+                randomArray(array,bolum); 
+                break
+            }
+        }
+      }
+
      
     return (
         <DataContext.Provider
@@ -101,7 +159,9 @@ export const DataProvider = ({children})=>{
             setOperation,
             result,
             setResult,
-     
+            randomNumbersSub,
+            randomNumbersMul,
+            randomNumbersDiv
           }}
         >
           {children}

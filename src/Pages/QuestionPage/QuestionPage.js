@@ -20,9 +20,12 @@ const QuestionPage = () => {
     randomNumbersSum,
     operation,
     result ,
-    setResult
+    setResult,
+    randomNumbersSub,
+    randomNumbersMul,
+    randomNumbersDiv
   } = useData();
-  const generalResult = {...result};
+  
   const [previousAnswer, setPreviousAnswer] = useState({});
   const [A, setA] = useState("white");
   const [B, setB] = useState("white");
@@ -130,16 +133,36 @@ useEffect(() => {
       setC("white");
       setB("white");
       document.body.style.backgroundColor = '#2d2d2d';
-      randomNumbersSum();
-    }, );
+      if (operation==="+") {
+        randomNumbersSum();
+      } else if(operation==="-"){
+        randomNumbersSub();
+      }
+      else if (operation==="x"){
+        randomNumbersMul();
+      }
+      else if (operation==="÷"){
+        randomNumbersDiv();
+      }
+    }, 1000);
   }
   
 }, [isCorrect])
 
   
-  useEffect(() => {
-    console.log("random numbers",randomAnswer,firstValue)
-    randomNumbersSum();
+  useEffect(() => {  
+     
+    if (operation==="+") {
+      randomNumbersSum();
+    } else if(operation==="-"){
+      randomNumbersSub();
+    }
+    else if (operation==="x"){
+      randomNumbersMul();
+    }
+    else if (operation==="÷"){
+      randomNumbersDiv();
+    }
   }, []);
 
   return (
