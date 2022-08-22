@@ -31,9 +31,7 @@ const HomePage = () => {
       setOperation("x");
       
     } else if (operator === "Bölme") {
-      setOperation("÷");
-      //   let firstValue=Math.floor(Math.random() * 100);
-      // let secondValue=Math.floor(Math.random() * 10);
+      setOperation("÷");     
     }
   }, [operator]);
 

@@ -1,5 +1,5 @@
-import { createContext, useContext, useEffect, useState } from "react";
-import { answerButton, stickman,sadStickman ,happyStickman} from "../Assets";
+import { createContext, useContext, useState } from "react";
+import { answerButton} from "../Assets";
 const DataContext= createContext();
 export const useData = () => useContext(DataContext);
 
@@ -9,10 +9,7 @@ export const DataProvider = ({children})=>{
     const [secondValue, setSecondValue]=useState(null);
     const [operator, setOperator] = useState(null);
     const [operation, setOperation] = useState("");
-    const [fakeAnswerOne, setFakeAnswerOne] = useState(null);
-    const [fakeAnswerTwo, setFakeAnswerTwo] = useState(null);
     const [correctAnswer, setCorrectAnswer] = useState(null); // for Correct answer
-    const [answers,setAnswers] =useState(Array(10).fill("")); // for results screen
     const [randomAnswer,setRandomAnswers] =useState(Array(3).fill("")); // random answers in array
     const [color, setColor] = useState("white");
     const [index, setIndex] = useState(null);
@@ -33,14 +30,7 @@ export const DataProvider = ({children})=>{
         Points: 0,        
         Question: 1,
         CorrectUnits: 0,
-        WrongUnits: 0 });
-
-
-
-     
-      
-
-    
+        WrongUnits: 0 });    
 
     function randomArray(array,toplam) {
         var currentIndex = array.length, temporaryValue, randomIndex;
@@ -68,7 +58,6 @@ export const DataProvider = ({children})=>{
         randomArray(array,toplam)       
       }
 
-      
       function randomNumbersSub () {
         let firstValue = Math.floor(Math.random() * 100);
       let secondValue = Math.floor(Math.random() * 100);
@@ -90,13 +79,6 @@ export const DataProvider = ({children})=>{
       }
       }
 
-
-
-
-
-
-
-
       function randomNumbersMul () {
         let firstValue = (Math.floor(Math.random() * 10)+1);
         let secondValue = (Math.floor(Math.random() * 10)+1);
@@ -107,8 +89,6 @@ export const DataProvider = ({children})=>{
         setCorrectAnswer(carpma);
         randomArray(array,carpma);          
       }
-
-
 
       function randomNumbersDiv () {
         while (true) {
@@ -125,7 +105,6 @@ export const DataProvider = ({children})=>{
             }
         }
       }
-
      
     return (
         <DataContext.Provider
@@ -136,15 +115,9 @@ export const DataProvider = ({children})=>{
             secondValue,
             answerButton,       
             setOperator,
-            operator,
-            fakeAnswerOne,
-            fakeAnswerTwo,
-            correctAnswer,
-            setFakeAnswerOne,
-            setFakeAnswerTwo,
-            setCorrectAnswer,
-            setAnswers,
-            answers,
+            operator,            
+            correctAnswer,           
+            setCorrectAnswer,        
             setRandomAnswers,
             randomAnswer,           
             randomArray,

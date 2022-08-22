@@ -30,18 +30,20 @@ const QuestionPage = () => {
   const [A, setA] = useState("white");
   const [B, setB] = useState("white");
   const [C, setC] = useState("white");
-  const [abc, setABC] = useState(null);  
+  const [stickmanFace, setStickman] = useState(null);  
   const [isCorrect, setIscorrect] = useState("");
   
 
 
   const handleResult = (randomAnswer,randomAnswer2,randomAnswer3,value,index) => {
    
+    // cevabın doğruluğuna göre stickman kontrolü
     if (isCorrect==="") {
       correctAnswer===randomAnswer 
-      ? setABC(happyStickman(`${firstValue} ${operation} ${secondValue}`)) 
-      :setABC(sadStickman(`${firstValue} ${operation} ${secondValue}`))
+      ? setStickman(happyStickman(`${firstValue} ${operation} ${secondValue}`)) 
+      :setStickman(sadStickman(`${firstValue} ${operation} ${secondValue}`))
       
+        // işaretledikten sonra önceki soruların cevaplarını setleme
       value === 0 ?
     setPreviousAnswer({...previousAnswer,first:randomAnswer, second:randomAnswer2,third:randomAnswer3})
     :
@@ -52,6 +54,8 @@ const QuestionPage = () => {
      setPreviousAnswer({...previousAnswer,first:randomAnswer2, second:randomAnswer3,third:randomAnswer})
       
      )
+
+     // cevabın doğruluğuna göre renk kontrolü
   
       if (correctAnswer===randomAnswer && value===0 ) {
         setA("Black");
@@ -75,6 +79,7 @@ const QuestionPage = () => {
         index ===0 ? setA("#00bf63") : (index === 1 ? setB("#00bf63") : null)
       }
         
+       // cevabın doğruluğuna göre score hesaplamaları
       
         const allScores = { ...scores }; 
         const GeneralResult = { ...result }; 
@@ -176,8 +181,8 @@ useEffect(() => {
       </div>
       <div className="stickman-container" >
         <div className="stickman" id="stickmans" >
-        { isCorrect === "correct" && abc}
-        { isCorrect === "wrong" && abc}
+        { isCorrect === "correct" && stickmanFace}
+        { isCorrect === "wrong" && stickmanFace}
         { isCorrect === "" &&stickman(`${firstValue} ${operation} ${secondValue}`)}
         </div>
         <div className="answers">

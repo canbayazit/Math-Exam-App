@@ -5,21 +5,20 @@ import { useData } from "../../Context/DataContext";
 const GeneralTable=()=> {
 
   const {result,setResult} = useData();
-
  
     useEffect(() => {
-      const getGameState = async () => await JSON.parse(localStorage.getItem('gameState'));
-      getGameState().then(gameState => {
-         if (gameState) {
+      const getResultState = async () => await JSON.parse(localStorage.getItem('resultState'));
+      getResultState().then(resultState => {
+         if (resultState) {
            
-            setResult(gameState.result);
+            setResult(resultState.result);
          }
       });
    }, []);
   return (
     <div>
       <p>Puan: {result.Points}</p>
-      <p>Çözülen Sayısı: {result.CorrectUnits+result.WrongUnits=== NaN ? 0 : result.CorrectUnits+result.WrongUnits }</p>
+      <p>Çözülen Sayısı: {result.CorrectUnits + result.WrongUnits}</p>
       <p>Yanlıs Cevap:{result.WrongUnits }</p>
       <p>Dogru Cevap:{result.CorrectUnits}</p>
     </div>

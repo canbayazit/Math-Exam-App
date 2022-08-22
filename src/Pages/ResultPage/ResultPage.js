@@ -13,11 +13,8 @@ const ResultPage = () => {
     setScores
   } = useData();
 
-
-const allScores = {...scores};
-
 useEffect(() => {
-  localStorage.setItem('gameState', JSON.stringify({result }));
+  localStorage.setItem('resultState', JSON.stringify({result }));
   document.body.style.backgroundColor = '#2d2d2d';
   }, []);
 
