@@ -10,6 +10,10 @@ Matematik 4 işlem sorularından oluşan ve bu sorulara doğru cevap verilmesi d
 * SVG
 * SCSS
 
+## Uygulamayı Denemek İçin Tıklayın
+
+Uygulamanın Demosu : [Math Exam App Demo](https://mathexamapp.netlify.app/)
+
 ## İçerik
 
 -  [Figma ](https://www.figma.com/file/KBUZCtv1lw507YqSABRXwV/Matematik-%C3%96devi?node-id=0%3A1)
