@@ -8,6 +8,7 @@ Matematik 4 işlem sorularından oluşan ve bu sorulara doğru cevap verilmesi d
 * React Hooks
 * React-Router-Dom
 * SVG
+* SCSS
 
 ## İçerik
 
